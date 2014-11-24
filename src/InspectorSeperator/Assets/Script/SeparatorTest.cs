@@ -4,6 +4,7 @@ using System.Collections;
 public class SeparatorTest : MonoBehaviour {
 
 	public float a;
+	[SpaceAttribute (25)]
 	public float b;
 	[SeparatorAttribute (8.0f, 0.8f)]
 	public float c;

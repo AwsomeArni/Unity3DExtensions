@@ -21,7 +21,7 @@ public class SeparatorDrawer : PropertyDrawer {
 
 		Rect separatorRect = position;
 		separatorRect.height = tmpHeight;
-		separatorRect.x = EditorGUIUtility.currentViewWidth * Mathf.Clamp01(separatorAttribute.xOffset);;
+		separatorRect.x = EditorGUIUtility.currentViewWidth * Mathf.Clamp01(separatorAttribute.xOffset);
 		separatorRect.width = EditorGUIUtility.currentViewWidth * Mathf.Clamp01(separatorAttribute.widthOfView);
 
 		tmpHeight = separatorAttribute.height > 0 ? separatorAttribute.height + heightPadding : 0.0f;
