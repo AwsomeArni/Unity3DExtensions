@@ -77,7 +77,8 @@ public class IntDrawer : PropertyDrawer {
 				_realValueVector2 += val - _fakeValueVector2;
 			}
 
-			val = new Vector2(Mathf.Floor((float)_realValueVector2.x), Mathf.Floor((float)_realValueVector2.y));
+			val = new Vector2(Mathf.Floor((float)_realValueVector2.x),
+			                  Mathf.Floor((float)_realValueVector2.y));
 			_fakeValueVector2 = val;
 
 			prop.vector2Value = val;
@@ -94,7 +95,9 @@ public class IntDrawer : PropertyDrawer {
 				_realValueVector3 += val - _fakeValueVector3;
 			}
 			
-			val = new Vector3(Mathf.Floor((float)_realValueVector3.x), Mathf.Floor((float)_realValueVector3.y), Mathf.Floor((float)_realValueVector3.z));
+			val = new Vector3(Mathf.Floor((float)_realValueVector3.x),
+			                  Mathf.Floor((float)_realValueVector3.y),
+			                  Mathf.Floor((float)_realValueVector3.z));
 			_fakeValueVector3 = val;
 
 			prop.vector3Value = val;
@@ -111,7 +114,10 @@ public class IntDrawer : PropertyDrawer {
 				_realValueVector4 += val - _fakeValueVector4;
 			}
 			
-			val = new Vector4(Mathf.Floor((float)_realValueVector4.x), Mathf.Floor((float)_realValueVector4.y), Mathf.Floor((float)_realValueVector4.z), Mathf.Floor((float)_realValueVector4.w));
+			val = new Vector4(Mathf.Floor((float)_realValueVector4.x),
+			                  Mathf.Floor((float)_realValueVector4.y),
+			                  Mathf.Floor((float)_realValueVector4.z),
+			                  Mathf.Floor((float)_realValueVector4.w));
 			_fakeValueVector4 = val;
 
 			prop.vector4Value = val;
