@@ -10,7 +10,7 @@ public class ReadOnlyDrawer : PropertyDrawer {
 	// Here you must define the height of your property drawer. Called by Unity.
 	public override float GetPropertyHeight (SerializedProperty prop, GUIContent label) {
 		
-		return base.GetPropertyHeight (prop, label);
+		return EditorGUI.GetPropertyHeight (prop, label);
 	}
 
 	public override void OnGUI (Rect position, SerializedProperty prop, GUIContent label) {
