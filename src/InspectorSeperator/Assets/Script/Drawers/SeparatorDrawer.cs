@@ -12,7 +12,7 @@ public class SeparatorDrawer : PropertyDrawer {
 	// Here you must define the height of your property drawer. Called by Unity.
 	public override float GetPropertyHeight (SerializedProperty prop, GUIContent label) {
 
-		return base.GetPropertyHeight (prop, label) + (separatorAttribute.height > 0 ? separatorAttribute.height + heightPadding : 0.0f);
+		return EditorGUI.GetPropertyHeight (prop, label) + (separatorAttribute.height > 0 ? separatorAttribute.height + heightPadding : 0.0f);
 	}
 
 	public override void OnGUI (Rect position, SerializedProperty prop, GUIContent label) {
@@ -27,6 +27,6 @@ public class SeparatorDrawer : PropertyDrawer {
 		tmpHeight = separatorAttribute.height > 0 ? separatorAttribute.height + heightPadding : 0.0f;
 
 		EditorGUI.DrawRect(separatorRect, separatorAttribute.color);
-		EditorGUI.PropertyField(new Rect(position.x, position.y+tmpHeight, position.width, position.height-tmpHeight), prop, label);
+		EditorGUI.PropertyField(new Rect(position.x, position.y+tmpHeight, position.width, position.height-tmpHeight), prop, label, true);
 	}
 }
