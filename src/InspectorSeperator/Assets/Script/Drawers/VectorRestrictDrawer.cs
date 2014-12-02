@@ -3,8 +3,8 @@ using UnityEditor;
 using System.Collections;
 using System;
 
-[CustomPropertyDrawer (typeof (MinMaxAttribute))]
-public class MinMaxDrawer : PropertyDrawer {
+[CustomPropertyDrawer (typeof (VectorRestrictAttribute))]
+public class VectorRestrictDrawer : PropertyDrawer {
 
 	private Vector2 _prevVector2 = new Vector2(0,0);
 	private Vector3 _prevVector3 = new Vector3(0,0,0);
@@ -12,7 +12,7 @@ public class MinMaxDrawer : PropertyDrawer {
 
 	private bool _firstTime = true;
 
-	MinMaxAttribute _attribute { get { return ((MinMaxAttribute)attribute); } }
+	VectorRestrictAttribute _attribute { get { return ((VectorRestrictAttribute)attribute); } }
 
 	// Here you must define the height of your property drawer. Called by Unity.
 	public override float GetPropertyHeight (SerializedProperty prop, GUIContent label) {
@@ -159,7 +159,7 @@ public class MinMaxDrawer : PropertyDrawer {
 			
 			EditorGUI.PropertyField(position, prop, label, true);
 		} else {
-			EditorGUI.LabelField(position, label, new GUIContent("Use MinMax with Vectors."));
+			EditorGUI.LabelField(position, label, new GUIContent("Use VectorRestrict with Vectors."));
 		}
 	}
 }

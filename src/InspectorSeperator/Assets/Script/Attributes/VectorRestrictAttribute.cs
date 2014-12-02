@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MinMaxAttribute : PropertyAttribute {
+public class VectorRestrictAttribute : PropertyAttribute {
 
 	public bool considerMin = false;
 	public float min = 0;
 	public bool considerMax = false;
 	public float max = 0;
 
-	public MinMaxAttribute() {
+	public VectorRestrictAttribute() {
 		this.considerMin = false;
 		this.considerMax = false;
 	}
 
-	public MinMaxAttribute(float min, float max) {
+	public VectorRestrictAttribute(float min, float max) {
 		if (!Mathf.Approximately(Mathf.Infinity, Mathf.Abs(min))) {
 			this.min = min;
 			this.considerMin = true;
