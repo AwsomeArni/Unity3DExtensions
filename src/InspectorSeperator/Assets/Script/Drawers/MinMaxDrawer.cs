@@ -24,14 +24,25 @@ public class MinMaxDrawer : PropertyDrawer {
 
 		string proptype = prop.type;
 
-		
+		if (_attribute.considerMin && _attribute.considerMax) {
+			if (_attribute.min > _attribute.max) {
+				EditorGUI.LabelField(position, label, new GUIContent("Min value cannot be greater than max."));
+				return;
+			}
+		}
 
 		// TODO: Use a more proper way of comparing the types..
 		if (proptype == (typeof(Vector2).Name+"f")) {
 
 			Vector2 val = prop.vector2Value;
-
 			if (_firstTime) {
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+				}
 
 				val.y = val.x > val.y ? val.x : val.y;
 
@@ -43,6 +54,13 @@ public class MinMaxDrawer : PropertyDrawer {
 				} else if (!Mathf.Approximately(val.y, _prevVector2.y) && val.x > val.y) {
 					val.y = val.x;
 				}
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+				}
 			}
 			_prevVector2 = val;
 			prop.vector2Value = val;
@@ -53,13 +71,22 @@ public class MinMaxDrawer : PropertyDrawer {
 			Vector3 val = prop.vector3Value;
 			
 			if (_firstTime) {
-				
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+					val.z = val.z > _attribute.max ? _attribute.max : val.z;
+				}
+
 				val.y = val.x > val.y ? val.x : val.y;
 				val.z = val.y > val.z ? val.y : val.z;
 
 				_firstTime = false;
 			} else {
-				
+
 				if (!Mathf.Approximately(val.x, _prevVector3.x) && val.x > val.y) {
 					val.x = val.y;
 				} else if (!Mathf.Approximately(val.y, _prevVector3.y) && val.y < val.x) {
@@ -68,6 +95,14 @@ public class MinMaxDrawer : PropertyDrawer {
 					val.y = val.z;
 				} else if (!Mathf.Approximately(val.z, _prevVector3.z) && val.z < val.y) {
 					val.z = val.y;
+				}
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+					val.z = val.z > _attribute.max ? _attribute.max : val.z;
 				}
 			}
 			_prevVector3 = val;
@@ -79,7 +114,16 @@ public class MinMaxDrawer : PropertyDrawer {
 			Vector4 val = prop.vector4Value;
 			
 			if (_firstTime) {
-				
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+					val.z = val.z > _attribute.max ? _attribute.max : val.z;
+					val.w = val.w > _attribute.max ? _attribute.max : val.w;
+				}
+
 				val.y = val.x > val.y ? val.x : val.y;
 				val.z = val.y > val.z ? val.y : val.z;
 				val.w = val.z > val.w ? val.z : val.w;
@@ -99,6 +143,15 @@ public class MinMaxDrawer : PropertyDrawer {
 					val.z = val.w;
 				} else if (!Mathf.Approximately(val.w, _prevVector4.w) && val.w < val.z) {
 					val.w = val.z;
+				}
+
+				if (_attribute.considerMin) {
+					val.x = val.x < _attribute.min ? _attribute.min : val.x;
+				}
+				if (_attribute.considerMax) {
+					val.y = val.y > _attribute.max ? _attribute.max : val.y;
+					val.z = val.z > _attribute.max ? _attribute.max : val.z;
+					val.w = val.w > _attribute.max ? _attribute.max : val.w;
 				}
 			}
 			_prevVector4 = val;
